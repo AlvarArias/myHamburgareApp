@@ -8,39 +8,48 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @StateObject private var recipeViewModel = RecipeViewModel()
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            // Encabezado superior
-            VStack(spacing: 10) {
-              
-                searchBar
-                    .padding(.horizontal)
-                  
-                HStack {
-                    Spacer()
-                    Text("Burger App")
-                        .font(.title)
-                        .bold()
-                    Spacer()
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10) {
+                // Encabezado superior
+                VStack(spacing: 10) {
+                    
+                  //  searchBar
+                    //    .padding(.horizontal)
+                    
                 }
+                
+                Text("Trending now")
+                    .font(.title2)
+                    .bold()
+                    .padding(.horizontal)
+                
+                //Horizontal List View
+                scrollView
+                    .padding(.top, 0)
+                
+                // Featured Recipes List
+                featuredRecipes
+                    .padding(.top, 10)
+                
             }
-
-            Text("Trending now")
-                .font(.title2)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
             
-            //Horizontal List View
-            scrollView
-                .padding(.top, 0)
-
-            // Featured Recipes List
-            featuredRecipes
-                .padding(.top, 10)
-
+            .navigationTitle("Burger App")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                // Acción del botón de búsqueda
+            }) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.blue)
+            })
+            .padding(.top, 10)
+            .background(Color(.blue))
         }
+    
     }
+       
 }
 
 #Preview {
@@ -70,7 +79,6 @@ extension HomeView {
     
     var scrollView: some View {
         
-            // Trending Now - Horizontal List View
             ScrollView(.horizontal, showsIndicators: false) {
                
                 HStack(spacing: 16) {
@@ -107,16 +115,16 @@ extension HomeView {
                 .font(.title2)
                 .bold()
                 .padding(.horizontal)
-            List(0..<5, id: \.self) { index in
+            List(recipeViewModel.recipes) { recipe in
                 HStack {
                     Image(systemName: "leaf")
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundColor(.green)
                     VStack(alignment: .leading) {
-                        Text("Recipe \(index + 1)")
+                        Text(recipe.name)
                             .font(.headline)
-                        Text("Descripción breve de la receta.")
+                        Text(recipe.description)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
