@@ -16,6 +16,7 @@
 		6249742B2E4CA93C0032EDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6249742A2E4CA93C0032EDEE /* Assets.xcassets */; };
 		6249742E2E4CA93C0032EDEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6249742D2E4CA93C0032EDEE /* Preview Assets.xcassets */; };
 		624974382E4CADF50032EDEE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624974372E4CADF50032EDEE /* HomeView.swift */; };
+		627A9D9B2E4F4C3700980DF4 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		6249742A2E4CA93C0032EDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6249742D2E4CA93C0032EDEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		624974372E4CADF50032EDEE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		624974342E4CADBE0032EDEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */,
 				623B12992E4DE49100F50865 /* BrowseView.swift */,
 				623B129A2E4DE49100F50865 /* ProfileView.swift */,
 				623B12982E4DE49100F50865 /* ScanView.swift */,
@@ -183,6 +186,7 @@
 				623B12A12E4E1C4F00F50865 /* RecipeViewModel.swift in Sources */,
 				624974292E4CA93B0032EDEE /* ContentView.swift in Sources */,
 				623B129D2E4DE49100F50865 /* ProfileView.swift in Sources */,
+				627A9D9B2E4F4C3700980DF4 /* RecipeView.swift in Sources */,
 				624974272E4CA93B0032EDEE /* myHamburgareAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
