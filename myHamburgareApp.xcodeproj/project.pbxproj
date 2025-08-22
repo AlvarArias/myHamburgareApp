@@ -16,6 +16,8 @@
 		6249742B2E4CA93C0032EDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6249742A2E4CA93C0032EDEE /* Assets.xcassets */; };
 		6249742E2E4CA93C0032EDEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6249742D2E4CA93C0032EDEE /* Preview Assets.xcassets */; };
 		624974382E4CADF50032EDEE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624974372E4CADF50032EDEE /* HomeView.swift */; };
+		6262903F2E58A56B00EEF5E2 /* Recetas.json in Resources */ = {isa = PBXBuildFile; fileRef = 6262903D2E58A56B00EEF5E2 /* Recetas.json */; };
+		626290402E58A56B00EEF5E2 /* recipe_data_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262903E2E58A56B00EEF5E2 /* recipe_data_model.swift */; };
 		627A9D9B2E4F4C3700980DF4 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */; };
 		627F7A7B2E53309E0078070A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627F7A7A2E53309E0078070A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
@@ -31,6 +33,8 @@
 		6249742A2E4CA93C0032EDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6249742D2E4CA93C0032EDEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		624974372E4CADF50032EDEE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6262903D2E58A56B00EEF5E2 /* Recetas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recetas.json; sourceTree = "<group>"; };
+		6262903E2E58A56B00EEF5E2 /* recipe_data_model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recipe_data_model.swift; sourceTree = "<group>"; };
 		627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		627F7A7A2E53309E0078070A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +61,8 @@
 		623B12A02E4E1C4F00F50865 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6262903D2E58A56B00EEF5E2 /* Recetas.json */,
+				6262903E2E58A56B00EEF5E2 /* recipe_data_model.swift */,
 				623B129F2E4E1C4F00F50865 /* RecipeViewModel.swift */,
 			);
 			name = ViewModels;
@@ -174,6 +180,7 @@
 				627F7A7B2E53309E0078070A /* Launch Screen.storyboard in Resources */,
 				6249742E2E4CA93C0032EDEE /* Preview Assets.xcassets in Resources */,
 				6249742B2E4CA93C0032EDEE /* Assets.xcassets in Resources */,
+				6262903F2E58A56B00EEF5E2 /* Recetas.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +195,7 @@
 				623B129B2E4DE49100F50865 /* ScanView.swift in Sources */,
 				623B129C2E4DE49100F50865 /* BrowseView.swift in Sources */,
 				623B12A12E4E1C4F00F50865 /* RecipeViewModel.swift in Sources */,
+				626290402E58A56B00EEF5E2 /* recipe_data_model.swift in Sources */,
 				624974292E4CA93B0032EDEE /* ContentView.swift in Sources */,
 				623B129D2E4DE49100F50865 /* ProfileView.swift in Sources */,
 				627A9D9B2E4F4C3700980DF4 /* RecipeView.swift in Sources */,
@@ -328,12 +336,14 @@
 				DEVELOPMENT_TEAM = DDWAVNG7Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "H Recept";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,12 +368,14 @@
 				DEVELOPMENT_TEAM = DDWAVNG7Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "H Recept";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
