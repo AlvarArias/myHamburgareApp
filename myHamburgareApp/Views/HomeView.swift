@@ -13,14 +13,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
-                // Encabezado superior
-                VStack(spacing: 10) {
-                    
-                  //  searchBar
-                    //    .padding(.horizontal)
-                    
-                }
-                
+            
+                // Horizontal Scroll View
                 Text("Trending now")
                     .font(.title2)
                     .bold()
@@ -35,7 +29,6 @@ struct HomeView: View {
                     .padding(.top, 10)
                 
             }
-            
             .navigationTitle("Burger App")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button(action: {
@@ -47,9 +40,10 @@ struct HomeView: View {
             .padding(.top, 10)
             .background(Color(.blue))
         }
-    
+        .background(Color(.systemBackground))
+        
     }
-       
+        
 }
 
 #Preview {
@@ -134,6 +128,7 @@ extension HomeView {
             .listStyle(.plain)
             .frame(height: 300)
         }
+        .background(Color(.systemBackground))
     }
     
 }
