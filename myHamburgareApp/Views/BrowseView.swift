@@ -18,21 +18,7 @@ struct BrowseView: View {
         
         NavigationView {
             VStack(alignment: .leading, spacing: 12) {
-                // Título y botón de ajustes
-                /*
-                HStack {
-                   
-                    Spacer()
-                    Button(action: {
-                        // Acción de ajustes de búsqueda
-                    }) {
-                        Image(systemName: "slider.horizontal.3")
-                            .font(.title2)
-                            .foregroundColor(.accentColor)
-                    }
-                }
-                .padding(.horizontal)
-                */
+                
                 // Barra de búsqueda
                 HStack {
                     Image(systemName: "magnifyingglass")
@@ -46,46 +32,12 @@ struct BrowseView: View {
                 .padding(.horizontal)
                 
                 // Etiquetas horizontales
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        ForEach(tags, id: \ .self) { tag in
-                            Button(action: { selectedTag = tag }) {
-                                Text(tag)
-                                    .font(.subheadline)
-                                    .padding(.vertical, 6)
-                                    .padding(.horizontal, 16)
-                                    .background(selectedTag == tag ? Color.accentColor : Color(.systemGray5))
-                                    .foregroundColor(selectedTag == tag ? .white : .primary)
-                                    .cornerRadius(16)
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                
+                etiquerasView
+               
                 // Grid de recetas
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(recipeViewModel.recipes) { recipe in
-                            VStack(alignment: .leading, spacing: 8) {
-                                Image(systemName: "leaf")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 80)
-                                    .foregroundColor(.green)
-                                Text(recipe.name)
-                                    .font(.headline)
-                                Text(recipe.description)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
+                recipesGridView
+                    .padding(.top, 8)
+                
             }
             .padding(.top)
             .navigationTitle("Browse")
@@ -111,9 +63,64 @@ struct BrowseView: View {
                 }
             }
         }
+        .background(Color(.systemBackground))
     }
 }
 
 #Preview {
     BrowseView()
+}
+
+extension BrowseView {
+    var etiquerasView : some View {
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(tags, id: \ .self) { tag in
+                    Button(action: { selectedTag = tag }) {
+                        Text(tag)
+                            .font(.subheadline)
+                            .padding(.vertical, 6)
+                            .padding(.horizontal, 16)
+                            .background(selectedTag == tag ? Color.accentColor : Color(.systemGray5))
+                            .foregroundColor(selectedTag == tag ? .white : .primary)
+                            .cornerRadius(16)
+                    }
+                }
+            }
+            .padding(.horizontal)
+        }
+    }
+}
+
+
+extension BrowseView {
+    
+    var recipesGridView: some View {
+        
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(recipeViewModel.recipes) { recipe in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Image(systemName: "leaf")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 80)
+                            .foregroundColor(.green)
+                        Text(recipe.name)
+                            .font(.headline)
+                        Text(recipe.description)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(12)
+                }
+            }
+            .padding(.horizontal)
+        }
+        
+    }
+    
 }
