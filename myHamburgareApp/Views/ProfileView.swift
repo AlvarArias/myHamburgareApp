@@ -20,21 +20,10 @@ struct ProfileView: View {
                 // Barra de navegación
                 NavigationView {
                     VStack(alignment: .center, spacing: 16) {
-                        // Foto de usuario
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.accentColor, lineWidth: 3))
-                            .padding(.top, 8)
-                        // Nombre y descripción
-                        Text("Jhon Per")
-                            .font(.title2)
-                            .bold()
-                        Text("burgar entusiast")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                        
+                        // User
+                       userDetail
+                        
                         // Tabs
                         HStack(spacing: 24) {
                             ForEach(tabs, id: \ .self) { tab in
@@ -49,28 +38,14 @@ struct ProfileView: View {
                         .padding(.vertical, 8)
                         // Grid de recetas (solo si está seleccionado "My recipes")
                         if selectedTab == "My recipes" {
-                            ScrollView {
-                                LazyVGrid(columns: columns, spacing: 16) {
-                                    ForEach(recipeViewModel.recipes) { recipe in
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Image(systemName: "leaf")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 80)
-                                                .foregroundColor(.green)
-                                            Text(recipe.name)
-                                                .font(.headline)
-                                            Text(recipe.description)
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        .padding()
-                                        .background(Color(.systemGray6))
-                                        .cornerRadius(12)
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
+                            
+                           myRecipesGrid
+                        } else {
+                            // Contenido de configuración
+                            Text("Settings content goes here")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .padding()
                         }
                         Spacer()
                     }
@@ -97,3 +72,60 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
 }
+
+
+extension ProfileView {
+    
+    var userDetail : some View {
+        VStack {
+            Image(systemName: "person.crop.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.accentColor, lineWidth: 3))
+                .padding(.top, 8)
+            // Nombre y descripción
+            Text("Jhon Per")
+                .font(.title2)
+                .bold()
+            Text("burgar entusiast")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+        }
+    }
+}
+
+extension ProfileView {
+    
+    // Grid de recetas
+    
+    var myRecipesGrid: some View {
+        
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(recipeViewModel.recipes) { recipe in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Image(systemName: "leaf")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 80)
+                            .foregroundColor(.green)
+                        Text(recipe.name)
+                            .font(.headline)
+                        Text(recipe.description)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(12)
+                }
+            }
+            .padding(.horizontal)
+        }
+        
+    }
+}
+
