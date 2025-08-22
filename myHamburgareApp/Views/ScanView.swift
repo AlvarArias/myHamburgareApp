@@ -40,6 +40,7 @@ struct ScanView: View {
                     .foregroundColor(.accentColor)
             })
         }
+        .background(Color(.systemBackground))
     }
 }
 
