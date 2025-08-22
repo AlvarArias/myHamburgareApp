@@ -23,98 +23,26 @@ struct RecipeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    // Imagen principal
-                    Rectangle()
-                        .fill(Color(.systemGray5))
-                        .frame(height: 220)
-                        .overlay(
-                            Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 120, height: 120)
-                                .foregroundColor(.gray)
-                        )
-                        .cornerRadius(16)
-                        .padding(.horizontal)
-                        .padding(.top, 8)
-                    // Nombre y descripción
-                    Text(recipeName)
-                        .font(.title)
-                        .bold()
-                        .padding(.horizontal)
-                    Text(recipeDescription)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal)
-                    // Rating
-                    HStack(alignment: .center, spacing: 6) {
-                        Text(String(format: "%.1f", rating))
-                            .font(.headline)
-                        HStack(spacing: 2) {
-                            ForEach(0..<5) { i in
-                                if i < 4 {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
-                                } else {
-                                    Image(systemName: "star")
-                                        .foregroundColor(.yellow)
-                                }
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-
-                    // Línea de tiempo y nivel
-                    HStack(spacing: 24) {
-                        HStack(spacing: 6) {
-                            Image(systemName: "clock")
-                                .foregroundColor(.accentColor)
-                            Text("15 min")
-                                .font(.subheadline)
-                        }
-                        HStack(spacing: 6) {
-                            Image(systemName: "bolt.fill")
-                                .foregroundColor(.accentColor)
-                            Text("easy")
-                                .font(.subheadline)
-                        }
-                    }
-                    .padding(.horizontal)
+                    
+                    // Recipe Header
+                    recipeHeader
+                    .padding(.top, 8)
+                    
+                    // Recipe extra details
+                    recipeExtraDetails
+                    
+                    Divider()
 
                     // Ingredientes
-                    Text("Ingredients")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(0..<ingredients.count, id: \ .self) { i in
-                            HStack {
-                                Image(systemName: checkedIngredients[i] ? "checkmark.square.fill" : "square")
-                                    .foregroundColor(.accentColor)
-                                    .onTapGesture {
-                                        checkedIngredients[i].toggle()
-                                    }
-                                Text(ingredients[i])
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
+                    ingredientsView
+                    
+                    Divider()
+                    
                     // Instrucciones
-                    Text("Instructions")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(0..<instructions.count, id: \ .self) { i in
-                            HStack {
-                                Image(systemName: checkedInstructions[i] ? "checkmark.square.fill" : "square")
-                                    .foregroundColor(.accentColor)
-                                    .onTapGesture {
-                                        checkedInstructions[i].toggle()
-                                    }
-                                Text(instructions[i])
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
+                    instructionsView
+                    
+                    Divider()
+                    
                     // Botón
                     Button(action: {
                         // Acción para agregar a la lista de compras
@@ -127,24 +55,13 @@ struct RecipeView: View {
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
+                    
+                    
+                    
                     // Agregar review con estrellas
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Add a review")
-                            .font(.headline)
-                        HStack(spacing: 4) {
-                            ForEach(1...5, id: \.self) { i in
-                                Image(systemName: i <= userRating ? "star.fill" : "star")
-                                    .resizable()
-                                    .frame(width: 28, height: 28)
-                                    .foregroundColor(.yellow)
-                                    .onTapGesture {
-                                        userRating = i
-                                    }
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.bottom, 24)
+                    addReviewView
+                    
+                  
                 }
             }
             .navigationTitle("Recipe Details")
@@ -161,9 +78,148 @@ struct RecipeView: View {
                 }
             }
         }
+        .background(Color(.systemBackground))
     }
 }
 
 #Preview {
     RecipeView()
+}
+
+extension RecipeView {
+    
+    var recipeHeader: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // Imagen principal
+            Rectangle()
+                .fill(Color(.systemGray5))
+                .frame(height: 220)
+                .overlay(
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                        .foregroundColor(.gray)
+                )
+                .cornerRadius(16)
+                .padding(.horizontal)
+                .padding(.top, 8)
+            // Nombre y descripción
+            Text(recipeName)
+                .font(.title)
+                .bold()
+                .padding(.horizontal)
+            Text(recipeDescription)
+                .font(.body)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+        }
+    }
+    
+}
+
+extension RecipeView {
+    
+    var recipeExtraDetails: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // Rating
+            HStack(alignment: .center, spacing: 6) {
+                Text(String(format: "%.1f", rating))
+                    .font(.headline)
+                HStack(spacing: 2) {
+                    ForEach(0..<5) { i in
+                        Image(systemName: i < Int(rating.rounded()) ? "star.fill" : "star")
+                            .foregroundColor(.yellow)
+                    }
+                }
+            }
+            .padding(.horizontal)
+            
+            // Línea de tiempo y nivel
+            HStack(spacing: 24) {
+                HStack(spacing: 6) {
+                    Image(systemName: "clock")
+                        .foregroundColor(.accentColor)
+                    Text("15 min")
+                        .font(.subheadline)
+                }
+                HStack(spacing: 6) {
+                    Image(systemName: "bolt.fill")
+                        .foregroundColor(.accentColor)
+                    Text("easy")
+                        .font(.subheadline)
+                }
+            }
+            .padding(.horizontal)
+        }
+    }
+    
+}
+
+extension RecipeView {
+    
+    var ingredientsView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Ingredients")
+                .font(.headline)
+            ForEach(0..<ingredients.count, id: \ .self) { i in
+                HStack {
+                    Image(systemName: checkedIngredients[i] ? "checkmark.square.fill" : "square")
+                        .foregroundColor(.accentColor)
+                        .onTapGesture {
+                            checkedIngredients[i].toggle()
+                        }
+                    Text(ingredients[i])
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+}
+
+extension RecipeView {
+    
+    var instructionsView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Instructions")
+                .font(.headline)
+            ForEach(0..<instructions.count, id: \ .self) { i in
+                HStack {
+                    Image(systemName: checkedInstructions[i] ? "checkmark.square.fill" : "square")
+                        .foregroundColor(.accentColor)
+                        .onTapGesture {
+                            checkedInstructions[i].toggle()
+                        }
+                    Text(instructions[i])
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+}
+
+
+extension RecipeView {
+    
+    var addReviewView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Add a review")
+                .font(.headline)
+            HStack(spacing: 4) {
+                ForEach(1...5, id: \.self) { i in
+                    Image(systemName: i <= userRating ? "star.fill" : "star")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(.yellow)
+                        .onTapGesture {
+                            userRating = i
+                        }
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
 }
