@@ -19,7 +19,6 @@ struct myHamburgareAppApp: App {
             .environmentObject(tabSelection)
             }
         }
-       
 }
 
 
