@@ -1,0 +1,362 @@
+[
+    {
+        "nombre_receta": "Hamburguesa Clásica con Queso",
+        "descripcion": "Una deliciosa hamburguesa de carne jugosa con queso cheddar, ideal para una comida rápida y satisface cualquier antojo.",
+        "categoria": "carne",
+        "tiempo_ejecucion": 25,
+        "calorias_aproximadas": 700,
+        "nivel_dificultad": "fácil",
+        "pasos": [
+            "Formar 4 hamburguesas con la carne molida, sazonar con sal y pimienta.",
+            "Calentar la parrilla o sartén y cocinar las hamburguesas 4 minutos por lado.",
+            "Colocar una loncha de queso cheddar sobre cada hamburguesa y tapar para que se derrita.",
+            "Tostar ligeramente los panes de hamburguesa.",
+            "Armar las hamburguesas con pan, carne con queso, lechuga, tomate y salsa al gusto."
+        ],
+        "ingredientes": [
+            "500g carne molida de res",
+            "4 lonchas de queso cheddar",
+            "4 panes de hamburguesa",
+            "Lechuga",
+            "Tomate",
+            "Sal y pimienta",
+            "Salsa al gusto"
+        ],
+        "lista_compra": [
+            "Carne molida de res (500g)",
+            "Queso cheddar (paquete de 4 lonchas)",
+            "Panes de hamburguesa (paquete de 4)",
+            "Lechuga (un manojo)",
+            "Tomates (2 para rodajas)",
+            "Sal y pimienta",
+            "Salsa favorita"
+        ]
+    },
+    {
+        "nombre_receta": "Hamburguesa BBQ con Tocino",
+        "descripcion": "Sabor excepcional con carne jugosa, tocino crujiente y salsa BBQ casera para una experiencia inigualable.",
+        "categoria": "carne",
+        "tiempo_ejecucion": 35,
+        "calorias_aproximadas": 850,
+        "nivel_dificultad": "medio",
+        "pasos": [
+            "Formar las hamburguesas con la carne molida y sazonar con sal y pimienta.",
+            "Cocinar las lonchas de tocino en una sartén hasta que estén crujientes; reservar.",
+            "Cocinar las hamburguesas 4 minutos por lado en sartén o parrilla.",
+            "Colocar el queso cheddar sobre las hamburguesas para que se derrita.",
+            "Tostar los panes de hamburguesa.",
+            "Armar la hamburguesa con pan, carne con queso, tocino, lechuga, tomates y salsa BBQ."
+        ],
+        "ingredientes": [
+            "600g carne molida de res",
+            "8 lonchas de tocino",
+            "4 lonchas de queso cheddar",
+            "4 panes de hamburguesa",
+            "Lechuga",
+            "Tomate",
+            "Salsa BBQ",
+            "Sal y pimienta"
+        ],
+        "lista_compra": [
+            "Carne molida de res (600g)",
+            "Tocino (8 lonchas)",
+            "Queso cheddar (paquete de 4 lonchas)",
+            "Panes de hamburguesa (paquete de 4)",
+            "Lechuga (un manojo)",
+            "Tomates (2 para rodajas)",
+            "Salsa BBQ",
+            "Sal y pimienta"
+        ]
+    },
+    {
+            "nombre_receta": "Hamburguesa Vegetariana de Garbanzos",
+            "descripcion": "Hamburguesa saludable y nutritiva a base de garbanzos con un toque de especias, ideal para una comida ligera.",
+            "categoria": "vegetariana",
+            "tiempo_ejecucion": 40,
+            "calorias_aproximadas": 420,
+            "nivel_dificultad": "fácil",
+            "pasos": [
+                "Lavar y escurrir los garbanzos cocidos.",
+                "Machacar los garbanzos en un bol grande.",
+                "Agregar zanahoria rallada, pan rallado, huevo, ajo picado, comino, sal y pimienta.",
+                "Mezclar hasta obtener una masa homogénea.",
+                "Formar hamburguesas con la mezcla.",
+                "Cocinar en sartén con aceite de oliva 3 minutos por cada lado.",
+                "Montar en pan integral con tomate, lechuga y salsa al gusto."
+            ],
+            "ingredientes": [
+                "400g garbanzos cocidos",
+                "1 zanahoria rallada",
+                "50g pan rallado",
+                "1 huevo",
+                "1 diente de ajo",
+                "1/2 cucharadita de comino",
+                "Sal y pimienta al gusto",
+                "Aceite de oliva",
+                "4 panes integrales",
+                "4 rodajas de tomate",
+                "Hojas de lechuga",
+                "Salsa al gusto"
+            ],
+            "lista_compra": [
+                "Garbanzos cocidos (400g)",
+                "Zanahoria (1)",
+                "Pan rallado (50g)",
+                "Huevos (1)",
+                "Ajo (1 diente)",
+                "Comino (frasco pequeño)",
+                "Sal y pimienta",
+                "Aceite de oliva",
+                "Panes integrales (paquete de 4)",
+                "Tomates (2-3)",
+                "Lechuga",
+                "Salsa favorita"
+            ]
+        },
+        {
+            "nombre_receta": "Hamburguesa Vegetariana de Portobello",
+            "descripcion": "Jugosa hamburguesa con champiñones portobello asados, perfecta para quienes buscan sabor intenso y saludable.",
+            "categoria": "vegetariana",
+            "tiempo_ejecucion": 30,
+            "calorias_aproximadas": 350,
+            "nivel_dificultad": "fácil",
+            "pasos": [
+                "Limpia los champiñones portobello y quita los tallos.",
+                "Marinar los champiñones en aceite de oliva, ajo picado, sal y pimienta por 10 minutos.",
+                "Asar los champiñones en sartén o parrilla 4 minutos por lado.",
+                "Tostar ligeramente los panes de hamburguesa.",
+                "Montar la hamburguesa con pan, champiñón asado, rodajas de tomate, hojas de espinaca y queso mozzarella."
+            ],
+            "ingredientes": [
+                "4 champiñones portobello grandes",
+                "Aceite de oliva",
+                "2 dientes de ajo picados",
+                "Sal y pimienta",
+                "Queso mozzarella (4 lonchas)",
+                "4 panes de hamburguesa",
+                "Tomate",
+                "Hojas de espinaca"
+            ],
+            "lista_compra": [
+                "Champiñones portobello (4 grandes)",
+                "Aceite de oliva",
+                "Ajo (2 dientes)",
+                "Sal y pimienta",
+                "Queso mozzarella (paquete de lonchas)",
+                "Panes de hamburguesa (paquete de 4)",
+                "Tomates (2)",
+                "Espinaca fresca"
+            ]
+        },
+        {
+            "nombre_receta": "Hamburguesa Vegetariana de Lentejas",
+            "descripcion": "Hamburguesa casera hecha con lentejas, rica en proteínas y fibra, ideal para una alimentación balanceada.",
+            "categoria": "vegetariana",
+            "tiempo_ejecucion": 45,
+            "calorias_aproximadas": 430,
+            "nivel_dificultad": "medio",
+            "pasos": [
+                "Cocinar lentejas hasta que estén blandas y escurrir.",
+                "Machacar las lentejas y mezclar con cebolla picada, ajo, pan rallado, huevo, cilantro, sal y pimienta.",
+                "Formar hamburguesas con la mezcla.",
+                "Cocinar en sartén con aceite de oliva 4-5 minutos por lado hasta dorar.",
+                "Montar en pan integral con lechuga, tomate y mayonesa vegana."
+            ],
+            "ingredientes": [
+                "400g lentejas cocidas",
+                "1 cebolla pequeña picada",
+                "1 diente de ajo picado",
+                "50g pan rallado",
+                "1 huevo",
+                "Cilantro fresco picado",
+                "Sal y pimienta al gusto",
+                "Aceite de oliva",
+                "4 panes integrales",
+                "Lechuga",
+                "Tomate",
+                "Mayonesa vegana"
+            ],
+            "lista_compra": [
+                "Lentejas cocidas (400g)",
+                "Cebolla (1 pequeña)",
+                "Ajo (1 diente)",
+                "Pan rallado (50g)",
+                "Huevos (1)",
+                "Cilantro fresco",
+                "Sal y pimienta",
+                "Aceite de oliva",
+                "Panes integrales (paquete de 4)",
+                "Lechuga",
+                "Tomates (2-3)",
+                "Mayonesa vegana"
+            ]
+        },
+
+        {
+            "nombre_receta": "Hamburguesa Vegana de Frijoles Negros",
+            "descripcion": "Hamburguesa sabrosa y nutritiva hecha con frijoles negros y especias, ideal para una dieta vegana equilibrada.",
+            "categoria": "vegana",
+            "tiempo_ejecucion": 45,
+            "calorias_aproximadas": 400,
+            "nivel_dificultad": "medio",
+            "pasos": [
+                "Escurrir y enjuagar los frijoles negros cocidos.",
+                "Machacar los frijoles en un bol grande.",
+                "Añadir cebolla picada, ajo, pan rallado, harina de avena, comino, sal y pimienta.",
+                "Mezclar bien hasta obtener una masa manejable.",
+                "Formar hamburguesas con la mezcla.",
+                "Cocinar en sartén con un poco de aceite 4 minutos por lado hasta que estén doradas.",
+                "Montar en pan vegano con lechuga, tomate y aguacate."
+            ],
+            "ingredientes": [
+                "400g frijoles negros cocidos",
+                "1 cebolla pequeña picada",
+                "2 dientes de ajo picados",
+                "50g pan rallado vegano",
+                "30g harina de avena",
+                "1/2 cucharadita de comino",
+                "Sal y pimienta al gusto",
+                "Aceite vegetal",
+                "4 panes veganos",
+                "Lechuga",
+                "Tomate",
+                "Aguacate"
+            ],
+            "lista_compra": [
+                "Frijoles negros cocidos (400g)",
+                "Cebolla (1 pequeña)",
+                "Ajo (2 dientes)",
+                "Pan rallado vegano (50g)",
+                "Harina de avena (30g)",
+                "Comino",
+                "Sal y pimienta",
+                "Aceite vegetal",
+                "Panes veganos (paquete de 4)",
+                "Lechuga",
+                "Tomates (2-3)",
+                "Aguacate (1)"
+            ]
+        },
+        {
+            "nombre_receta": "Hamburguesa Vegana de Tofu y Espinaca",
+            "descripcion": "Perfecta hamburguesa vegana con tofu firme y espinacas frescas, una opción nutritiva y deliciosa.",
+            "categoria": "vegana",
+            "tiempo_ejecucion": 35,
+            "calorias_aproximadas": 380,
+            "nivel_dificultad": "fácil",
+            "pasos": [
+                "Desmenuzar el tofu firme y escurrir el exceso de agua.",
+                "Picar finamente las espinacas y mezclar con el tofu.",
+                "Agregar ajo picado, salsa de soja, pan rallado vegano y sal.",
+                "Formar hamburguesas compactas con la mezcla.",
+                "Cocinar en sartén con aceite durante 4 minutos por lado.",
+                "Montar en pan vegano con tomate, pepinillos y mayonesa vegana."
+            ],
+            "ingredientes": [
+                "300g tofu firme",
+                "100g espinacas frescas",
+                "2 dientes de ajo picados",
+                "50g pan rallado vegano",
+                "2 cucharadas de salsa de soja",
+                "Sal al gusto",
+                "Aceite vegetal",
+                "4 panes veganos",
+                "Tomate",
+                "Pepinillos",
+                "Mayonesa vegana"
+            ],
+            "lista_compra": [
+                "Tofu firme (300g)",
+                "Espinacas frescas (100g)",
+                "Ajo (2 dientes)",
+                "Pan rallado vegano (50g)",
+                "Salsa de soja",
+                "Sal",
+                "Aceite vegetal",
+                "Panes veganos (paquete de 4)",
+                "Tomates (2)",
+                "Pepinillos",
+                "Mayonesa vegana"
+            ]
+        }
+    
+    ,
+        {
+            "nombre_receta": "Hamburguesa Típica Mexicana",
+            "descripcion": "Hamburguesa con sabor auténtico mexicano, con carne jugosa y toppings clásicos como guacamole, jalapeños y salsa picante.",
+            "categoria": "carne",
+            "tiempo_ejecucion": 30,
+            "calorias_aproximadas": 750,
+            "nivel_dificultad": "medio",
+            "pasos": [
+                "Formar hamburguesas con carne molida, sal y pimienta al gusto.",
+                "Cocinar las hamburguesas en sartén o parrilla 4 minutos por lado.",
+                "Preparar guacamole mezclando aguacate, cebolla, cilantro, jugo de limón y sal.",
+                "Tostar los panes para hamburguesa.",
+                "Montar la hamburguesa con pan, carne, guacamole, rodajas de jalapeños, queso fresco desmoronado, lechuga y salsa picante."
+            ],
+            "ingredientes": [
+                "500g carne molida de res",
+                "1 aguacate maduro",
+                "1/4 cebolla picada",
+                "Cilantro picado",
+                "Jugo de 1 limón",
+                "Sal y pimienta",
+                "Rodajas de jalapeño en conserva",
+                "Queso fresco desmoronado",
+                "Lechuga",
+                "Panes para hamburguesa",
+                "Salsa picante al gusto"
+            ],
+            "lista_compra": [
+                "Carne molida de res (500g)",
+                "Aguacate (1)",
+                "Cebolla (1/4)",
+                "Cilantro fresco",
+                "Limón (1)",
+                "Sal y pimienta",
+                "Jalapeños en conserva",
+                "Queso fresco (100g)",
+                "Lechuga (un manojo)",
+                "Panes para hamburguesa (paquete de 4)",
+                "Salsa picante"
+            ]
+        },
+        {
+            "nombre_receta": "Hamburguesa Típica Americana",
+            "descripcion": "Clásica hamburguesa americana con carne, queso cheddar, tocino y salsa BBQ, un verdadero sabor del sur de Estados Unidos.",
+            "categoria": "carne",
+            "tiempo_ejecucion": 35,
+            "calorias_aproximadas": 850,
+            "nivel_dificultad": "medio",
+            "pasos": [
+                "Formar hamburguesas con carne molida y sazonar con sal y pimienta.",
+                "Cocinar tocino en sartén hasta que esté crujiente; reservar.",
+                "Cocinar las hamburguesas 4 minutos por lado.",
+                "Colocar lonchas de queso cheddar sobre las hamburguesas y tapar para fundir el queso.",
+                "Tostar ligeramente los panes de hamburguesa.",
+                "Montar la hamburguesa con pan, carne con queso, tocino, lechuga, tomate y salsa BBQ."
+            ],
+            "ingredientes": [
+                "600g carne molida de res",
+                "8 lonchas de tocino",
+                "4 lonchas de queso cheddar",
+                "4 panes de hamburguesa",
+                "Lechuga",
+                "Tomate",
+                "Salsa BBQ",
+                "Sal y pimienta"
+            ],
+            "lista_compra": [
+                "Carne molida de res (600g)",
+                "Tocino (8 lonchas)",
+                "Queso cheddar (paquete de 4 lonchas)",
+                "Panes de hamburguesa (paquete de 4)",
+                "Lechuga (un manojo)",
+                "Tomates (2 para rodajas)",
+                "Salsa BBQ",
+                "Sal y pimienta"
+            ]
+        }
+    
+]
