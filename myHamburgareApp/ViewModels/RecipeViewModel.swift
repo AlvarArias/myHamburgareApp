@@ -2,19 +2,27 @@ import Foundation
 import SwiftUI
 
 class RecipeViewModel: ObservableObject {
-    // Lista de recetas de ejemplo
-    @Published var recipes: [Recipe] = [
-        Recipe(id: 1, name: "Classic Burger", description: "Carne, queso, lechuga y tomate."),
-        Recipe(id: 2, name: "Veggie Burger", description: "Hamburguesa vegetariana con garbanzos."),
-        Recipe(id: 3, name: "BBQ Burger", description: "Con salsa barbacoa y cebolla caramelizada."),
-        Recipe(id: 4, name: "Chicken Burger", description: "Pollo crujiente y mayonesa especial."),
-        Recipe(id: 5, name: "Cheese Lover's Burger", description: "Extra queso cheddar y suizo.")
-    ]
-}
+    // Lista de recetas cargadas desde el archivo JSON
+    @Published var recipes: [Recipe] = []
 
-struct Recipe: Identifiable {
-    let id: Int
-    let name: String
-    let description: String
+    init() {
+        loadRecipes()
+    }
+
+    private func loadRecipes() {
+        guard let url = Bundle.main.url(forResource: "Recetas", withExtension: "json") else {
+            print("Error: No se encontró el archivo Recetas.json")
+            return
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            recipes = try decoder.decode([Recipe].self, from: data)
+            print("Recetas cargadas exitosamente: \(recipes.count)")
+        } catch {
+            print("Error al cargar las recetas: \(error)")
+        }
+    }
 }
 

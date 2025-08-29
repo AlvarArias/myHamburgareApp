@@ -38,8 +38,8 @@ enum DifficultyLevel: String, CaseIterable, Codable {
 
 // MARK: - Recipe Model
 struct Recipe: Codable, Identifiable {
-    let id = UUID().toString() // Unique identifier for each recipe
-    let nombreReceta: String
+    let id = UUID().uuidString // Unique identifier for each recipe
+    var nombreReceta: String
     let descripcion: String
     let categoria: RecipeCategory
     let tiempoEjecucion: Int // in minutes

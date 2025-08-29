@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ProfileView: View {
@@ -112,9 +111,9 @@ extension ProfileView {
                             .scaledToFit()
                             .frame(height: 80)
                             .foregroundColor(.green)
-                        Text(recipe.name)
+                        Text(recipe.nombreReceta)
                             .font(.headline)
-                        Text(recipe.description)
+                        Text(recipe.descripcion)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
