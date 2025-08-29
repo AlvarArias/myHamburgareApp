@@ -116,9 +116,9 @@ extension HomeView {
                         .frame(width: 40, height: 40)
                         .foregroundColor(.green)
                     VStack(alignment: .leading) {
-                        Text(recipe.name)
+                        Text(recipe.nombreReceta)
                             .font(.headline)
-                        Text(recipe.description)
+                        Text(recipe.descripcion)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
