@@ -91,6 +91,7 @@ struct AnimatedTabView: View {
             }
             .padding()
             .background(Color(.systemGray6))
+            .tint(.accentColor)
         }
         .environmentObject(tabSelection)
     }
