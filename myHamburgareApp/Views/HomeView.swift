@@ -24,6 +24,7 @@ struct HomeView: View {
                 //Horizontal List View
                 scrollView
                     .padding(.top, 0)
+                   
                 
                 // Featured Recipes List
                 featuredRecipes
@@ -36,12 +37,13 @@ struct HomeView: View {
                 // Acción del botón de búsqueda
             }) {
                 Image(systemName: "magnifyingglass")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.accentColor)
             })
             .padding(.top, 10)
             //.background(Color(.blue).opacity(0.15))
         }
         .background(Color(.systemBackground))
+    
        
     }
         
@@ -57,18 +59,21 @@ extension HomeView {
     var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .renderingMode(.template)
-                .foregroundColor(.red) // No funciona
+                //.renderingMode(.template)
                 .frame(width: 50, height: 50)
-               
+        
+            
             TextField("Buscar...", text: .constant(""))
                 .textFieldStyle(PlainTextFieldStyle())
+             
             
         }
         .padding(8)
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
+       
     }
+   
     
     
 }
