@@ -19,6 +19,7 @@ struct HomeView: View {
                     .font(.title2)
                     .bold()
                     .padding(.horizontal)
+                    
                 
                 //Horizontal List View
                 scrollView
@@ -26,7 +27,7 @@ struct HomeView: View {
                 
                 // Featured Recipes List
                 featuredRecipes
-                    .padding(.top, 10)
+                    .padding(.top, 0)
                 
             }
             .navigationTitle("Burger App")
@@ -38,10 +39,10 @@ struct HomeView: View {
                     .foregroundColor(.blue)
             })
             .padding(.top, 10)
-            .background(Color(.blue))
+            //.background(Color(.blue).opacity(0.15))
         }
         .background(Color(.systemBackground))
-        
+       
     }
         
 }
@@ -50,25 +51,29 @@ struct HomeView: View {
     HomeView()
 }
 
-
+// Search Bar View
 extension HomeView {
     
     var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
+                .renderingMode(.template)
+                .foregroundColor(.red) // No funciona
+                .frame(width: 50, height: 50)
+               
             TextField("Buscar...", text: .constant(""))
                 .textFieldStyle(PlainTextFieldStyle())
+            
         }
         .padding(8)
-        .background(Color(.systemGray6))
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
     }
     
+    
 }
 
-
+// Horizontal Scroll View
 extension HomeView {
     
     var scrollView: some View {
@@ -78,12 +83,20 @@ extension HomeView {
                 HStack(spacing: 16) {
                     ForEach(0..<10) { index in
                         VStack {
-                            Image(systemName: "flame.fill")
+                            Image("Hamburgere")
                                 .resizable()
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(.accentColor)
-                            Text("Item \(index + 1)")
-                                .font(.caption)
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(8)
+                        
+                            Text(recipeViewModel.recipes.randomElement()?.nombreReceta ?? "Recipe")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: 150, minHeight: 60)
+                                .lineLimit(3)
+                                .truncationMode(.tail)
+                                .multilineTextAlignment(.leading)
+                                
                         }
                         .padding()
                         .background(Color(.systemGray6))
@@ -94,27 +107,33 @@ extension HomeView {
                 .padding(. horizontal)
                 
             }
-            .background(Color.red)
+           // .background(Color.red).opacity(0.5)
 
           
         }
     
 }
 
+// Featured Recipes List
 extension HomeView {
     
     var featuredRecipes: some View {
         VStack(alignment: .leading, spacing: 8) {
+           
             Text("Featured Recipes")
                 .font(.title2)
                 .bold()
                 .padding(.horizontal)
+                .foregroundColor(Color("Accento"))
+            
             List(recipeViewModel.recipes) { recipe in
                 HStack {
-                    Image(systemName: "leaf")
+                    Image("Hamburgere")
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundColor(.green)
+                        .cornerRadius(8)
+                    
                     VStack(alignment: .leading) {
                         Text(recipe.nombreReceta)
                             .font(.headline)
@@ -128,7 +147,7 @@ extension HomeView {
             .listStyle(.plain)
             .frame(height: 300)
         }
-        .background(Color(.systemBackground))
+        .background(Color("Background"))
     }
     
 }
