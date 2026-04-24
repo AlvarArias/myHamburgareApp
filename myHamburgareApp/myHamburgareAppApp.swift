@@ -10,12 +10,14 @@ import SwiftUI
 @main
 
 struct myHamburgareAppApp: App {
-    @State private var tabSelection = TabSelection()
+    @StateObject private var tabSelection = TabSelection()
+    @StateObject private var recipeViewModel = RecipeViewModel()
 
     var body: some Scene {
         WindowGroup {
             AnimatedTabView()
                 .environmentObject(tabSelection)
+                .environmentObject(recipeViewModel)
         }
     }
 }

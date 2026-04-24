@@ -2,8 +2,13 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var selectedTab = "My recipes"
-    @StateObject private var recipeViewModel = RecipeViewModel()
+    @EnvironmentObject private var recipeViewModel: RecipeViewModel
     @EnvironmentObject var tabSelection: TabSelection
+
+    @AppStorage("profileName") private var profileName = "Jhon Per"
+    @AppStorage("profileBio") private var profileBio = "burger enthusiast"
+    @AppStorage("profileNotificationsEnabled") private var notificationsEnabled = true
+    @AppStorage("profileFavoriteTag") private var favoriteTag = "Popular"
 
     let tabs = ["My recipes", "Settings"]
     let columns = [
@@ -58,10 +63,36 @@ struct ProfileView: View {
     }
 
     private var settingsView: some View {
-        Text("Settings content goes here")
-            .font(.headline)
-            .foregroundColor(.secondary)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Perfil")
+                    .font(.headline)
+
+                TextField("Nombre", text: $profileName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                TextField("Bio", text: $profileBio)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Toggle("Recibir notificaciones", isOn: $notificationsEnabled)
+                    .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+
+                Picker("Etiqueta favorita", selection: $favoriteTag) {
+                    ForEach(["Popular", "Vegetarian", "30 minutos", "Mis recetas"], id: \.self) { tag in
+                        Text(tag)
+                    }
+                }
+                .pickerStyle(.menu)
+
+                Text("Los ajustes se guardan automáticamente.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
             .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(16)
+            .padding(.horizontal)
+        }
     }
 
     private var userDetail: some View {
@@ -74,13 +105,14 @@ struct ProfileView: View {
                 .overlay(Circle().stroke(Color.accentColor, lineWidth: 3))
                 .padding(.top, 8)
 
-            Text("Jhon Per")
+            Text(profileName)
                 .font(.title2)
                 .bold()
-            Text("burgar entusiast")
+            Text(profileBio)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
+        .padding(.bottom, 8)
     }
 
     private var myRecipesGrid: some View {
@@ -111,5 +143,7 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
+        .environmentObject(RecipeViewModel())
+        .environmentObject(TabSelection())
 }
 

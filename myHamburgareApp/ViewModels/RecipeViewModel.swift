@@ -25,5 +25,9 @@ class RecipeViewModel: ObservableObject {
             print("Error al cargar las recetas: \(error)")
         }
     }
+
+    func addRecipe(_ recipe: Recipe) {
+        recipes.append(recipe)
+    }
 }
 

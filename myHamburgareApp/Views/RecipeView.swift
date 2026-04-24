@@ -1,118 +1,137 @@
 import SwiftUI
 
 struct RecipeView: View {
-    // Datos de ejemplo
-    let recipeName: String = "Classic Burger"
-    let recipeDescription: String = "Delicious burger with cheese, lettuce, tomato, and special sauce."
-    let rating: Double = 4.5
-    let ingredients = [
-        "Beef Patty", "Cheddar Cheese", "Lettuce", "Tomato", "Onion", "Burger Bun"
-    ]
-    let instructions = [
-        "Grill the beef patty.",
-        "Toast the bun.",
-        "Assemble the burger with cheese and veggies.",
-        "Add sauce and serve."
-    ]
-    
-    @State private var checkedIngredients = Array(repeating: false, count: 6)
-    @State private var checkedInstructions = Array(repeating: false, count: 4)
+    let recipe: Recipe
+    let rating: Double
+    let ingredients: [String]
+    let instructions: [String]
+
+    @State private var checkedIngredients: [Bool]
+    @State private var checkedInstructions: [Bool]
     @State private var userRating: Int = 0
+
+    init(recipe: Recipe) {
+        self.recipe = recipe
+        self.rating = 4.5
+        self.ingredients = recipe.ingredientes
+        self.instructions = recipe.pasos
+        self._checkedIngredients = State(initialValue: Array(repeating: false, count: recipe.ingredientes.count))
+        self._checkedInstructions = State(initialValue: Array(repeating: false, count: recipe.pasos.count))
+    }
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    
-                    // Recipe Header
-                    recipeHeader
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                // Recipe Header
+                recipeHeader
                     .padding(.top, 8)
-                    
-                    // Recipe extra details
-                    recipeExtraDetails
-                    
-                    Divider()
+                
+                // Recipe extra details
+                recipeExtraDetails
+                
+                Divider()
 
-                    // Ingredientes
-                    ingredientsView
-                    
-                    Divider()
-                    
-                    // Instrucciones
-                    instructionsView
-                    
-                    Divider()
-                    
-                    // Botón
-                    Button(action: {
-                        // Acción para agregar a la lista de compras
-                    }) {
-                        Text("Add to shopping list")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal)
-                    
-                    
-                    
-                    // Agregar review con estrellas
-                    addReviewView
-                    
-                  
+                // Ingredientes
+                ingredientsView
+                
+                Divider()
+                
+                // Instrucciones
+                instructionsView
+                
+                Divider()
+                
+                // Botón
+                Button(action: {
+                    // Acción para agregar a la lista de compras
+                }) {
+                    Text("Add to shopping list")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-            }
-            .navigationTitle("Recipe Details")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // Acción de volver
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .font(.title2)
-                            .foregroundColor(.accentColor)
-                    }
-                }
+                .padding(.horizontal)
+                
+                
+                
+                // Agregar review con estrellas
+                addReviewView
+                
+                
             }
         }
+        .navigationTitle("Recipe Details")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemBackground))
     }
 }
 
 #Preview {
-    RecipeView()
+    RecipeView(recipe: Recipe(
+        nombreReceta: "Hamburguesa Clásica",
+        descripcion: "Una hamburguesa deliciosa con queso, lechuga y salsa especial.",
+        categoria: .carne,
+        tiempoEjecucion: 25,
+        caloriasAproximadas: 720,
+        imageName: nil,
+        nivelDificultad: .facil,
+        pasos: ["Cocinar la carne.", "Montar la hamburguesa.", "Servir caliente."],
+        ingredientes: ["Carne", "Queso", "Pan", "Lechuga", "Tomate"],
+        listaCompra: ["Carne", "Pan", "Queso", "Lechuga", "Tomate"]
+    ))
 }
 
 extension RecipeView {
     
     var recipeHeader: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 12) {
             // Imagen principal
-            Rectangle()
-                .fill(Color(.systemGray5))
-                .frame(height: 220)
-                .overlay(
-                    Image(systemName: "photo")
+            Group {
+                if let imageName = recipe.imageName,
+                   !imageName.isEmpty,
+                   UIImage(named: imageName) != nil {
+                    Image(imageName)
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 120, height: 120)
-                        .foregroundColor(.gray)
-                )
-                .cornerRadius(16)
-                .padding(.horizontal)
-                .padding(.top, 8)
+                        .scaledToFill()
+                } else {
+                    Rectangle()
+                        .fill(Color(.systemGray5))
+                        .overlay(
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 120, height: 120)
+                                .foregroundColor(.gray)
+                        )
+                }
+            }
+            .frame(height: 220)
+            .cornerRadius(16)
+            .clipped()
+            .padding(.horizontal)
+            .padding(.top, 8)
+
             // Nombre y descripción
-            Text(recipeName)
+            Text(recipe.nombreReceta)
                 .font(.title)
                 .bold()
                 .padding(.horizontal)
-            Text(recipeDescription)
+
+            Text(recipe.descripcion)
                 .font(.body)
                 .foregroundColor(.secondary)
                 .padding(.horizontal)
+
+            HStack(spacing: 16) {
+                Label(recipe.categoria.displayName, systemImage: "tag")
+                Label(recipe.caloriesFormatted, systemImage: "flame")
+            }
+            .font(.subheadline)
+            .foregroundColor(.secondary)
+            .padding(.horizontal)
         }
     }
     
@@ -140,13 +159,13 @@ extension RecipeView {
                 HStack(spacing: 6) {
                     Image(systemName: "clock")
                         .foregroundColor(.accentColor)
-                    Text("15 min")
+                    Text(recipe.executionTimeFormatted)
                         .font(.subheadline)
                 }
                 HStack(spacing: 6) {
                     Image(systemName: "bolt.fill")
                         .foregroundColor(.accentColor)
-                    Text("easy")
+                    Text(recipe.nivelDificultad.displayName)
                         .font(.subheadline)
                 }
             }
