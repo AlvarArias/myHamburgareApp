@@ -13,6 +13,10 @@ final class MockRecipeStore: ObservableObject, RecipeStoreProviding {
         self.recipes = recipes
     }
 
+    var recipesPublisher: AnyPublisher<[Recipe], Never> {
+        $recipes.eraseToAnyPublisher()
+    }
+
     func addRecipe(_ recipe: Recipe) {
         recipes.append(recipe)
     }
@@ -68,20 +72,21 @@ struct RecipeTests {
         try plistContents.write(to: infoPlist, atomically: true, encoding: .utf8)
 
         guard let missingBundle = Bundle(path: temporaryRoot.path) else {
-            #expect(false)
+            Issue.record("Failed to create temporary test bundle")
             return
         }
 
         let repository = JSONRecipeRepository(bundle: missingBundle)
         do {
             _ = try repository.loadRecipes()
-            #expect(false)
+            Issue.record("Expected fileNotFound error but loadRecipes() succeeded")
         } catch let error as RecipeRepositoryError {
-            if case .fileNotFound = error {
-                #expect(true)
-            } else {
-                #expect(false)
+            guard case .fileNotFound = error else {
+                Issue.record("Expected .fileNotFound, got \(error)")
+                return
             }
+        } catch {
+            Issue.record("Unexpected error type: \(error)")
         }
     }
 
@@ -109,7 +114,6 @@ struct RecipeTests {
         #expect(viewModel.trendingRecipes.count == 2)
 
         await store.addRecipe(makeRecipe(name: "Receta C", category: .vegetariana, time: 15))
-        await Task.yield()
 
         #expect(viewModel.featuredRecipes.count == 3)
     }

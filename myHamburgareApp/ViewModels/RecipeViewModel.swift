@@ -23,6 +23,7 @@ protocol RecipeRepository {
 protocol RecipeStoreProviding: ObservableObject {
     var objectWillChange: ObservableObjectPublisher { get }
     var recipes: [Recipe] { get }
+    var recipesPublisher: AnyPublisher<[Recipe], Never> { get }
     func addRecipe(_ recipe: Recipe)
 }
 
@@ -65,6 +66,10 @@ final class RecipeStore: ObservableObject, RecipeStoreProviding {
         } catch {
             print("Error al cargar las recetas: \(error)")
         }
+    }
+
+    var recipesPublisher: AnyPublisher<[Recipe], Never> {
+        $recipes.eraseToAnyPublisher()
     }
 
     func addRecipe(_ recipe: Recipe) {

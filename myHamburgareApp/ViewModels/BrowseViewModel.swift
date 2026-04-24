@@ -18,10 +18,9 @@ final class BrowseViewModel: ObservableObject {
     }
 
     private func bindStore() {
-        recipeStore.objectWillChange
-            .sink { [weak self] in
-                guard let self = self else { return }
-                self.recipes = self.recipeStore.recipes
+        recipeStore.recipesPublisher
+            .sink { [weak self] recipes in
+                self?.recipes = recipes
             }
             .store(in: &cancellables)
     }
