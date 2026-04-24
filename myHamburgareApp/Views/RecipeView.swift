@@ -20,7 +20,7 @@ struct RecipeView: View {
     @State private var userRating: Int = 0
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     

@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-
-    
     @State private var selectedTab = "My recipes"
     @StateObject private var recipeViewModel = RecipeViewModel()
     @EnvironmentObject var tabSelection: TabSelection
@@ -14,68 +12,59 @@ struct ProfileView: View {
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .center, spacing: 16) {
-                // Barra de navegación
-                NavigationView {
-                    VStack(alignment: .center, spacing: 16) {
-                        
-                        // User
-                       userDetail
-                        
-                        // Tabs
-                        HStack(spacing: 24) {
-                            ForEach(tabs, id: \ .self) { tab in
-                                Button(action: { selectedTab = tab }) {
-                                    Text(tab)
-                                        .font(.headline)
-                                        .foregroundColor(selectedTab == tab ? .accentColor : .gray)
-                                        .underline(selectedTab == tab, color: .accentColor)
-                                }
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        // Grid de recetas (solo si está seleccionado "My recipes")
-                        if selectedTab == "My recipes" {
-                            
-                           myRecipesGrid
-                        } else {
-                            // Contenido de configuración
-                            Text("Settings content goes here")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                                .padding()
-                        }
-                        Spacer()
-                    }
-                    .padding(.top)
-                    .navigationTitle("Profile")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: {
-                                tabSelection.selectedTab = 0 // Cambia al tab Home
-                            }) {
-                                Image(systemName: "chevron.left")
-                                    .font(.title2)
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
+                userDetail
+
+                tabSelector
+
+                if selectedTab == "My recipes" {
+                    myRecipesGrid
+                } else {
+                    settingsView
+                }
+
+                Spacer()
+            }
+            .padding(.top)
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        tabSelection.selectedTab = 0
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.title2)
+                            .foregroundColor(.accentColor)
                     }
                 }
             }
         }
     }
-}
 
-#Preview {
-    ProfileView()
-}
+    private var tabSelector: some View {
+        HStack(spacing: 24) {
+            ForEach(tabs, id: \.self) { tab in
+                Button(action: { selectedTab = tab }) {
+                    Text(tab)
+                        .font(.headline)
+                        .foregroundColor(selectedTab == tab ? .accentColor : .gray)
+                        .underline(selectedTab == tab, color: .accentColor)
+                }
+            }
+        }
+        .padding(.vertical, 8)
+    }
 
+    private var settingsView: some View {
+        Text("Settings content goes here")
+            .font(.headline)
+            .foregroundColor(.secondary)
+            .padding()
+    }
 
-extension ProfileView {
-    
-    var userDetail : some View {
+    private var userDetail: some View {
         VStack {
             Image(systemName: "person.crop.circle")
                 .resizable()
@@ -84,24 +73,17 @@ extension ProfileView {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.accentColor, lineWidth: 3))
                 .padding(.top, 8)
-            // Nombre y descripción
+
             Text("Jhon Per")
                 .font(.title2)
                 .bold()
             Text("burgar entusiast")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
         }
     }
-}
 
-extension ProfileView {
-    
-    // Grid de recetas
-    
-    var myRecipesGrid: some View {
-        
+    private var myRecipesGrid: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(recipeViewModel.recipes) { recipe in
@@ -124,7 +106,10 @@ extension ProfileView {
             }
             .padding(.horizontal)
         }
-        
     }
+}
+
+#Preview {
+    ProfileView()
 }
 

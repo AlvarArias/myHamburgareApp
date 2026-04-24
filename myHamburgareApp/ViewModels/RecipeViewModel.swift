@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class RecipeViewModel: ObservableObject {
     // Lista de recetas cargadas desde el archivo JSON
     @Published var recipes: [Recipe] = []

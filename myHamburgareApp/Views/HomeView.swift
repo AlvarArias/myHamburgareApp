@@ -11,7 +11,7 @@ struct HomeView: View {
     @StateObject private var recipeViewModel = RecipeViewModel()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 10) {
             
                 // Horizontal Scroll View
@@ -109,7 +109,7 @@ extension HomeView {
                     }
                     .padding()
                 }
-                .padding(. horizontal)
+                .padding(.horizontal)
                 
             }
            // .background(Color.red).opacity(0.5)
