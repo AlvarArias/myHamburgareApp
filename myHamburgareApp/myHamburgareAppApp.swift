@@ -10,25 +10,25 @@ import SwiftUI
 @main
 
 struct myHamburgareAppApp: App {
-    
-    @StateObject private var tabSelection = TabSelection()
-    
+    @State private var tabSelection = TabSelection()
+
     var body: some Scene {
         WindowGroup {
             AnimatedTabView()
-            .environmentObject(tabSelection)
-            }
+                .environmentObject(tabSelection)
         }
+    }
 }
 
 
 
+@MainActor
 class TabSelection: ObservableObject {
     @Published var selectedTab: Int = 0
 }
 
 struct AnimatedTabView: View {
-    @StateObject private var tabSelection = TabSelection()
+    @EnvironmentObject private var tabSelection: TabSelection
 
     var body: some View {
         VStack(spacing: 0) {

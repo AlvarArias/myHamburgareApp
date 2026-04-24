@@ -15,7 +15,7 @@ struct BrowseView: View {
 
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 12) {
                 
                 // Barra de búsqueda

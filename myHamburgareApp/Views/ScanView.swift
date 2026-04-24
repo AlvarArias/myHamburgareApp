@@ -4,7 +4,7 @@ struct ScanView: View {
     @EnvironmentObject var tabSelection: TabSelection
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text( "Scan your QR code to get started")
                     .font(.title3)
