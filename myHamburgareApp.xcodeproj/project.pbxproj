@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,16 @@
 		627F7A7B2E53309E0078070A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627F7A7A2E53309E0078070A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		625EC12F2F9BB31A00631A76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6249741B2E4CA93B0032EDEE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 624974222E4CA93B0032EDEE;
+			remoteInfo = myHamburgareApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		623B12982E4DE49100F50865 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		623B12992E4DE49100F50865 /* BrowseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
@@ -37,6 +47,7 @@
 		6249742A2E4CA93C0032EDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6249742D2E4CA93C0032EDEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		624974372E4CADF50032EDEE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		625EC12B2F9BB31A00631A76 /* myHamburgareAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myHamburgareAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6262903D2E58A56B00EEF5E2 /* Recetas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recetas.json; sourceTree = "<group>"; };
 		6262903E2E58A56B00EEF5E2 /* recipe_data_model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recipe_data_model.swift; sourceTree = "<group>"; };
 		626290412E58A56B00EEF5E2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -47,8 +58,19 @@
 		627F7A7A2E53309E0078070A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		625EC12C2F9BB31A00631A76 /* myHamburgareAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = myHamburgareAppTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		624974202E4CA93B0032EDEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		625EC1282F9BB31A00631A76 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				624974252E4CA93B0032EDEE /* myHamburgareApp */,
+				625EC12C2F9BB31A00631A76 /* myHamburgareAppTests */,
 				624974242E4CA93B0032EDEE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				624974232E4CA93B0032EDEE /* myHamburgareApp.app */,
+				625EC12B2F9BB31A00631A76 /* myHamburgareAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +175,29 @@
 			productReference = 624974232E4CA93B0032EDEE /* myHamburgareApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		625EC12A2F9BB31A00631A76 /* myHamburgareAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 625EC1332F9BB31A00631A76 /* Build configuration list for PBXNativeTarget "myHamburgareAppTests" */;
+			buildPhases = (
+				625EC1272F9BB31A00631A76 /* Sources */,
+				625EC1282F9BB31A00631A76 /* Frameworks */,
+				625EC1292F9BB31A00631A76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				625EC1302F9BB31A00631A76 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				625EC12C2F9BB31A00631A76 /* myHamburgareAppTests */,
+			);
+			name = myHamburgareAppTests;
+			packageProductDependencies = (
+			);
+			productName = myHamburgareAppTests;
+			productReference = 625EC12B2F9BB31A00631A76 /* myHamburgareAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,11 +205,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					624974222E4CA93B0032EDEE = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					625EC12A2F9BB31A00631A76 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = 624974222E4CA93B0032EDEE;
 					};
 				};
 			};
@@ -180,6 +231,7 @@
 			projectRoot = "";
 			targets = (
 				624974222E4CA93B0032EDEE /* myHamburgareApp */,
+				625EC12A2F9BB31A00631A76 /* myHamburgareAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +245,13 @@
 				6249742E2E4CA93C0032EDEE /* Preview Assets.xcassets in Resources */,
 				6249742B2E4CA93C0032EDEE /* Assets.xcassets in Resources */,
 				6262903F2E58A56B00EEF5E2 /* Recetas.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		625EC1292F9BB31A00631A76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +278,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		625EC1272F9BB31A00631A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		625EC1302F9BB31A00631A76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 624974222E4CA93B0032EDEE /* myHamburgareApp */;
+			targetProxy = 625EC12F2F9BB31A00631A76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6249742F2E4CA93C0032EDEE /* Debug */ = {
@@ -368,8 +442,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.myHamburgareApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -401,9 +475,53 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.myHamburgareApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		625EC1312F9BB31A00631A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DDWAVNG7Q4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.myHamburgareAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myHamburgareApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/myHamburgareApp";
+			};
+			name = Debug;
+		};
+		625EC1322F9BB31A00631A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DDWAVNG7Q4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.myHamburgareAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myHamburgareApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/myHamburgareApp";
 			};
 			name = Release;
 		};
@@ -424,6 +542,15 @@
 			buildConfigurations = (
 				624974322E4CA93C0032EDEE /* Debug */,
 				624974332E4CA93C0032EDEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		625EC1332F9BB31A00631A76 /* Build configuration list for PBXNativeTarget "myHamburgareAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				625EC1312F9BB31A00631A76 /* Debug */,
+				625EC1322F9BB31A00631A76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
