@@ -2,15 +2,15 @@
 
 ## High Priority
 
-- [ ] TICKET-001: Connect recipe cards in `HomeView` and `BrowseView` to navigate into `RecipeView` with the selected recipe details.
-- [ ] TICKET-002: Implement actual QR/image scanning flow in `ScanView` and parse scanned recipes into app state.
-- [ ] TICKET-003: Add functional search and category/tag filters in `BrowseView` using `RecipeViewModel` data.
-- [ ] TICKET-004: Expand `ProfileView` "Settings" panel and save user preferences locally.
+- [x] TICKET-001: Connect recipe cards in `HomeView` and `BrowseView` to navigate into `RecipeView` with the selected recipe details.
+- [x] TICKET-002: Implement actual QR/image scanning flow in `ScanView` and parse scanned recipes into app state.
+- [x] TICKET-003: Add functional search and category/tag filters in `BrowseView` using `RecipeViewModel` data.
+- [x] TICKET-004: Expand `ProfileView` "Settings" panel and save user preferences locally.
 
 ## Medium Priority
 
-- [ ] TICKET-005: Improve `Recipe` model to support real image data and dynamic detail rendering in `RecipeView`.
-- [ ] TICKET-006: Clean up unused views/code and unify navigation structure so `NavigationView` wrappers are consistent.
+- [x] TICKET-005: Improve `Recipe` model to support real image data and dynamic detail rendering in `RecipeView`.
+- [x] TICKET-006: Clean up unused views/code and unify navigation structure so `NavigationView` wrappers are consistent.
 
 ## Notes
 

@@ -44,6 +44,7 @@ struct Recipe: Codable, Identifiable {
     let categoria: RecipeCategory
     let tiempoEjecucion: Int // in minutes
     let caloriasAproximadas: Int
+    let imageName: String?
     let nivelDificultad: DifficultyLevel
     let pasos: [String]
     let ingredientes: [String]
@@ -60,6 +61,19 @@ struct Recipe: Codable, Identifiable {
         case pasos
         case ingredientes
         case listaCompra = "lista_compra"
+        case imageName = "image_name"
+    }
+
+    static func from(scannedString: String) throws -> Recipe {
+        let decoder = JSONDecoder()
+        let data = scannedString.data(using: .utf8) ?? Data()
+        if let recipe = try? decoder.decode(Recipe.self, from: data) {
+            return recipe
+        }
+        if let array = try? decoder.decode([Recipe].self, from: data), let first = array.first {
+            return first
+        }
+        throw DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "No se pudo decodificar la receta del texto escaneado."))
     }
     
     // Computed properties for display
