@@ -1,0 +1,13 @@
+[
+  {
+    "nombre_receta": "Prueba Burger",
+    "descripcion": "Hamburguesa de prueba",
+    "categoria": "carne",
+    "tiempo_ejecucion": 20,
+    "calorias_aproximadas": 500,
+    "nivel_dificultad": "fácil",
+    "pasos": ["Paso 1", "Paso 2"],
+    "ingredientes": ["Pan", "Carne"],
+    "lista_compra": ["Pan", "Carne"]
+  }
+]

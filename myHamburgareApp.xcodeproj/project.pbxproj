@@ -24,6 +24,8 @@
 		626290482E58A56B00EEF5E2 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626290442E58A56B00EEF5E2 /* ScanViewModel.swift */; };
 		627A9D9B2E4F4C3700980DF4 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */; };
 		627F7A7B2E53309E0078070A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627F7A7A2E53309E0078070A /* Launch Screen.storyboard */; };
+		629D94592E4F4C3700980DF4 /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D94582E4F4C3700980DF4 /* RecipeTests.swift */; };
+		629D946B2E4F4C3700980DF4 /* Recetas.json in Resources */ = {isa = PBXBuildFile; fileRef = 629D946A2E4F4C3700980DF4 /* Recetas.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +58,15 @@
 		626290442E58A56B00EEF5E2 /* ScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		627A9D9A2E4F4C3700980DF4 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		627F7A7A2E53309E0078070A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		629D94582E4F4C3700980DF4 /* RecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
+		629D946A2E4F4C3700980DF4 /* Recetas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recetas.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		625EC12C2F9BB31A00631A76 /* myHamburgareAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = myHamburgareAppTests; sourceTree = "<group>"; };
+		625EC12C2F9BB31A00631A76 /* myHamburgareAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; children = (
+				629D94582E4F4C3700980DF4 /* RecipeTests.swift */,
+				629D946A2E4F4C3700980DF4 /* Recetas.json */,
+			); explicitFileTypes = {}; explicitFolders = (); path = myHamburgareAppTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629D946B2E4F4C3700980DF4 /* Recetas.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629D94592E4F4C3700980DF4 /* RecipeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
