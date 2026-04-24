@@ -33,6 +33,20 @@ struct ScanView: View {
                         Text(recipe.descripcion)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
+
+                        HStack(spacing: 12) {
+                            Button(action: {
+                                saveScannedRecipe()
+                            }) {
+                                Text(isRecipeSaved(recipe) ? "Receta guardada" : "Guardar receta")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(isRecipeSaved(recipe) ? Color.gray.opacity(0.3) : Color.accentColor)
+                                    .foregroundColor(isRecipeSaved(recipe) ? .primary : .white)
+                                    .cornerRadius(12)
+                            }
+                            .disabled(isRecipeSaved(recipe))
+                        }
                     }
                     .padding()
                     .background(Color(.systemGray6))
@@ -87,7 +101,6 @@ struct ScanView: View {
                     case .success(let scannedText):
                         do {
                             let recipe = try Recipe.from(scannedString: scannedText)
-                            recipeViewModel.addRecipe(recipe)
                             scannedRecipe = recipe
                             scanErrorMessage = nil
                         } catch {
@@ -100,6 +113,23 @@ struct ScanView: View {
             }
         }
         .background(Color(.systemBackground))
+    }
+
+    private func isRecipeSaved(_ recipe: Recipe) -> Bool {
+        recipeViewModel.recipes.contains {
+            $0.nombreReceta == recipe.nombreReceta &&
+            $0.descripcion == recipe.descripcion
+        }
+    }
+
+    private func saveScannedRecipe() {
+        guard let recipe = scannedRecipe, !isRecipeSaved(recipe) else {
+            scanErrorMessage = "La receta ya está guardada."
+            return
+        }
+
+        recipeViewModel.addRecipe(recipe)
+        scanErrorMessage = "Receta guardada correctamente."
     }
 }
 
