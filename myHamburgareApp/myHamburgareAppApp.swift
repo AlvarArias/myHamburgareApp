@@ -8,21 +8,17 @@
 import SwiftUI
 
 @main
-
 struct myHamburgareAppApp: App {
     @StateObject private var tabSelection = TabSelection()
-    @StateObject private var recipeViewModel = RecipeViewModel()
+    @StateObject private var recipeStore = RecipeStore(repository: JSONRecipeRepository(bundle: .main))
 
     var body: some Scene {
         WindowGroup {
-            AnimatedTabView()
+            AnimatedTabView(recipeStore: recipeStore)
                 .environmentObject(tabSelection)
-                .environmentObject(recipeViewModel)
         }
     }
 }
-
-
 
 @MainActor
 class TabSelection: ObservableObject {
@@ -31,24 +27,38 @@ class TabSelection: ObservableObject {
 
 struct AnimatedTabView: View {
     @EnvironmentObject private var tabSelection: TabSelection
+    let recipeStore: RecipeStore
+
+    @StateObject private var homeViewModel: HomeViewModel
+    @StateObject private var browseViewModel: BrowseViewModel
+    @StateObject private var scanViewModel: ScanViewModel
+    @StateObject private var profileViewModel: ProfileViewModel
+
+    init(recipeStore: RecipeStore) {
+        self.recipeStore = recipeStore
+        _homeViewModel = StateObject(wrappedValue: HomeViewModel(recipeStore: recipeStore))
+        _browseViewModel = StateObject(wrappedValue: BrowseViewModel(recipeStore: recipeStore))
+        _scanViewModel = StateObject(wrappedValue: ScanViewModel(recipeStore: recipeStore))
+        _profileViewModel = StateObject(wrappedValue: ProfileViewModel(recipeStore: recipeStore))
+    }
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
                 if tabSelection.selectedTab == 0 {
-                    HomeView()
+                    HomeView(viewModel: homeViewModel)
                         .transition(.slide)
                 }
                 if tabSelection.selectedTab == 1 {
-                    BrowseView()
+                    BrowseView(viewModel: browseViewModel)
                         .transition(.slide)
                 }
                 if tabSelection.selectedTab == 2 {
-                    ScanView()
+                    ScanView(viewModel: scanViewModel)
                         .transition(.slide)
                 }
                 if tabSelection.selectedTab == 3 {
-                    ProfileView()
+                    ProfileView(viewModel: profileViewModel)
                         .transition(.slide)
                 }
             }

@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var recipeViewModel: RecipeViewModel
+    @StateObject private var viewModel: HomeViewModel
+
+    init(viewModel: HomeViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
@@ -40,92 +44,73 @@ struct HomeView: View {
         }
         .background(Color(.systemBackground))
     }
-
 }
 
 #Preview {
-    HomeView()
-        .environmentObject(RecipeViewModel())
+    HomeView(viewModel: HomeViewModel(recipeStore: RecipeStore(repository: JSONRecipeRepository(bundle: .main))))
 }
 
 // Search Bar View
 extension HomeView {
-    
     var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                //.renderingMode(.template)
                 .frame(width: 50, height: 50)
-        
-            
+
             TextField("Buscar...", text: .constant(""))
                 .textFieldStyle(PlainTextFieldStyle())
-             
-            
         }
         .padding(8)
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
-       
     }
-   
-    
-    
 }
 
 // Horizontal Scroll View
 extension HomeView {
-    
     var scrollView: some View {
-        
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(recipeViewModel.recipes.prefix(10)) { recipe in
-                        NavigationLink(destination: RecipeView(recipe: recipe)) {
-                            VStack {
-                                Image("Hamburgere")
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    .cornerRadius(8)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 16) {
+                ForEach(viewModel.trendingRecipes) { recipe in
+                    NavigationLink(destination: RecipeView(recipe: recipe)) {
+                        VStack {
+                            Image("Hamburgere")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(8)
 
-                                Text(recipe.nombreReceta)
-                                    .font(.subheadline)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.secondary)
-                                    .frame(maxWidth: 150, minHeight: 60)
-                                    .lineLimit(3)
-                                    .truncationMode(.tail)
-                                    .multilineTextAlignment(.leading)
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
+                            Text(recipe.nombreReceta)
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: 150, minHeight: 60)
+                                .lineLimit(3)
+                                .truncationMode(.tail)
+                                .multilineTextAlignment(.leading)
                         }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
                     }
-                    .padding()
                 }
-                .padding(.horizontal)
+                .padding()
             }
-           // .background(Color.red).opacity(0.5)
-
-          
+            .padding(.horizontal)
         }
-    
+    }
 }
 
 // Featured Recipes List
 extension HomeView {
-    
     var featuredRecipes: some View {
         VStack(alignment: .leading, spacing: 8) {
-           
             Text("Featured Recipes")
                 .font(.title2)
                 .bold()
                 .padding(.horizontal)
                 .foregroundColor(Color("Accento"))
-            
-            List(recipeViewModel.recipes) { recipe in
+
+            List(viewModel.featuredRecipes) { recipe in
                 NavigationLink(destination: RecipeView(recipe: recipe)) {
                     HStack {
                         Image("Hamburgere")
@@ -150,5 +135,4 @@ extension HomeView {
         }
         .background(Color("Background"))
     }
-    
 }

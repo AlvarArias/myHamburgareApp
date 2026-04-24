@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var viewModel: ProfileViewModel
     @State private var selectedTab = "My recipes"
-    @EnvironmentObject private var recipeViewModel: RecipeViewModel
     @EnvironmentObject var tabSelection: TabSelection
 
     @AppStorage("profileName") private var profileName = "Jhon Per"
@@ -15,6 +15,10 @@ struct ProfileView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+
+    init(viewModel: ProfileViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
@@ -118,7 +122,7 @@ struct ProfileView: View {
     private var myRecipesGrid: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(recipeViewModel.recipes) { recipe in
+                ForEach(viewModel.recipes) { recipe in
                     VStack(alignment: .leading, spacing: 8) {
                         Image(systemName: "leaf")
                             .resizable()
@@ -142,8 +146,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
-        .environmentObject(RecipeViewModel())
+    ProfileView(viewModel: ProfileViewModel(recipeStore: RecipeStore(repository: JSONRecipeRepository(bundle: .main))))
         .environmentObject(TabSelection())
 }
 

@@ -3,11 +3,12 @@ import VisionKit
 
 struct ScanView: View {
     @EnvironmentObject var tabSelection: TabSelection
-    @EnvironmentObject private var recipeViewModel: RecipeViewModel
-
+    @StateObject private var viewModel: ScanViewModel
     @State private var isScannerPresented = false
-    @State private var scannedRecipe: Recipe?
-    @State private var scanErrorMessage: String?
+
+    init(viewModel: ScanViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
@@ -23,7 +24,7 @@ struct ScanView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                if let recipe = scannedRecipe {
+                if let recipe = viewModel.scannedRecipe {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Scanned recipe")
                             .font(.headline)
@@ -36,16 +37,16 @@ struct ScanView: View {
 
                         HStack(spacing: 12) {
                             Button(action: {
-                                saveScannedRecipe()
+                                viewModel.saveScannedRecipe()
                             }) {
-                                Text(isRecipeSaved(recipe) ? "Receta guardada" : "Guardar receta")
+                                Text(viewModel.isRecipeSaved ? "Receta guardada" : "Guardar receta")
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(isRecipeSaved(recipe) ? Color.gray.opacity(0.3) : Color.accentColor)
-                                    .foregroundColor(isRecipeSaved(recipe) ? .primary : .white)
+                                    .background(viewModel.isRecipeSaved ? Color.gray.opacity(0.3) : Color.accentColor)
+                                    .foregroundColor(viewModel.isRecipeSaved ? .primary : .white)
                                     .cornerRadius(12)
                             }
-                            .disabled(isRecipeSaved(recipe))
+                            .disabled(viewModel.isRecipeSaved)
                         }
                     }
                     .padding()
@@ -54,7 +55,7 @@ struct ScanView: View {
                     .padding(.horizontal)
                 }
 
-                if let errorMessage = scanErrorMessage {
+                if let errorMessage = viewModel.scanErrorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
                         .multilineTextAlignment(.center)
@@ -62,7 +63,7 @@ struct ScanView: View {
                 }
 
                 Button(action: {
-                    scanErrorMessage = nil
+                    viewModel.scanErrorMessage = nil
                     isScannerPresented = true
                 }) {
                     VStack(spacing: 12) {
@@ -87,7 +88,7 @@ struct ScanView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        tabSelection.selectedTab = 0 // Cambia al tab Home
+                        tabSelection.selectedTab = 0
                     }) {
                         Image(systemName: "chevron.left")
                             .font(.title2)
@@ -97,39 +98,11 @@ struct ScanView: View {
             }
             .sheet(isPresented: $isScannerPresented) {
                 QRScannerView(isPresented: $isScannerPresented) { result in
-                    switch result {
-                    case .success(let scannedText):
-                        do {
-                            let recipe = try Recipe.from(scannedString: scannedText)
-                            scannedRecipe = recipe
-                            scanErrorMessage = nil
-                        } catch {
-                            scanErrorMessage = "No se pudo convertir el código QR en una receta válida."
-                        }
-                    case .failure:
-                        scanErrorMessage = "No se detectó ningún QR válido. Por favor inténtalo de nuevo."
-                    }
+                    viewModel.handleScanResult(result)
                 }
             }
         }
         .background(Color(.systemBackground))
-    }
-
-    private func isRecipeSaved(_ recipe: Recipe) -> Bool {
-        recipeViewModel.recipes.contains {
-            $0.nombreReceta == recipe.nombreReceta &&
-            $0.descripcion == recipe.descripcion
-        }
-    }
-
-    private func saveScannedRecipe() {
-        guard let recipe = scannedRecipe, !isRecipeSaved(recipe) else {
-            scanErrorMessage = "La receta ya está guardada."
-            return
-        }
-
-        recipeViewModel.addRecipe(recipe)
-        scanErrorMessage = "Receta guardada correctamente."
     }
 }
 
@@ -211,7 +184,6 @@ struct QRScannerView: UIViewControllerRepresentable {
 }
 
 #Preview {
-    ScanView()
-        .environmentObject(RecipeViewModel())
+    ScanView(viewModel: ScanViewModel(recipeStore: RecipeStore(repository: JSONRecipeRepository(bundle: .main))))
         .environmentObject(TabSelection())
 }
