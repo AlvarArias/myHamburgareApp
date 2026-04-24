@@ -9,6 +9,10 @@ This project is developed by [AlvarArias](https://github.com/AlvarArias).
 myHamburgareApp is a burger-themed application. The app is designed to help users explore, create, or manage burgers and related content.  
 This repository contains the full source code and related assets.
 
+## Documentation
+
+- [Arquitectura y recomendaciones](docs/arquitectura.md)
+
 ## Features
 
 - Burger menu and customization
