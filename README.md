@@ -23,6 +23,19 @@ A SwiftUI burger recipe app built with a clean MVVM architecture, Swift Testing 
 
 ---
 
+## App screenshots 
+
+<table>
+  <tr>
+    <td><img src="docs/Hamburgare 1.png" height="400"></td>
+    <td width="20"></td>   
+    <td><img src="docs/Hamburgare 2.png" height="400"></td>
+  </tr>
+</table>
+
+
+---
+
 ## Tech Stack
 
 | Layer | Technologies |
